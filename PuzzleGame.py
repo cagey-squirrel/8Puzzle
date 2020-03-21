@@ -14,10 +14,13 @@ BL = False
 game_started = False
 COLOR = (0, 123, 123)
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 
 text_win = "You Win!"
+text_schuffle = "Schuffle"
 MyFontWin = pygame.font.SysFont("8-Bit-Madness", 100)
 label_win = MyFontWin.render(text_win, 1, WHITE)
+label_schuffle = MyFontWin.render(text_schuffle, 1, BLACK)
 win = False
 
 
@@ -111,9 +114,11 @@ while(run):
 
 
 
-    
+
     pygame.draw.rect(screen, COLOR, ( (0,600) , (600, 100)) )
     screen.blit(dark_square, (blank_position[0]*IMAGE_SIZE, blank_position[1]*IMAGE_SIZE))
+    screen.blit(label_schuffle, (170, 620))
+
     for img in imgs:
         if not ((img.posx, img.posy) == blank_position):
             img.draw()
@@ -131,7 +136,7 @@ while(run):
         else:
             randomStart()
             game_started = True
-    
+
     winf()
     if win:
         screen.blit(label_win, (170, 250))
